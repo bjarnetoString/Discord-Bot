@@ -17,14 +17,16 @@ print('Bot wird gestarted...')
 time.sleep(1)
 print('...')
 
-h = True
+h = 1
+
+
 
 antworten = ['Ja', 'Nein', 'Vielleicht', 'Wahrscheinlich', 'Sieht so aus', 'Sehr wahrscheinlich',
              'Sehr unwahrscheinlich', 'drei', '9999999999999999999999999999999999999999999999999']
 
 @client.event
 async def on_ready():
-    print('Du bist eingeloggt als Bot mit dem Namen: {}\n.....................................................................................................................................................................................................................................................................\nHier können Sie nun alle commands nachverfolgen:'.format(client.user.name))
+    print('Du bist eingeloggt als Bot mit dem Namen: {}\nHier können Sie nun alle commands nachverfolgen:'.format(client.user.name))
     client.loop.create_task(status_task())
 
 
@@ -46,7 +48,7 @@ async def on_member_join(member):
     guild: Guild = member.guild
     if not member.bot:
         embed = discord.Embed(title='Willkommen auf dem Superguay Server {} \n(va a ser superguay)'.format(member.name),
-                              description='Wir heißen dich herzlich Willkommen auf unserem Server! \nBitte beachte alle Regeln und sei vernünftig', color=0x22a7f0)
+                              description='Wir heißen dich herzlich Willkommen auf unserem Server! \nBitte beachte alle Regeln und sei vernünftig\nhttps://rickrolled.com/', color=0x22a7f0)
         embed.set_thumbnail(url= member.avatar_url)
         embed.set_footer(text='Hab Spaß')
 
@@ -73,12 +75,14 @@ counterdeutschland = 0
 counterhokuspokus = 0
 
 @client.event
-async def on_message(message):    
+async def on_message(message):
+     
     author = message.author    
     if message.author.bot:
         return
     if '.help' in message.content:  
-        global counterall      
+        global counterall
+        global counterhelp      
         counterall += 1
         counterhelp =+ 1
         print(f'@{author.name} hat .help benutzt' )
@@ -308,9 +312,7 @@ async def on_message(message):
         print(f'@{author.name} hat deutschland benutzt')
         await message.channel.send('moskau moskau')
     
-    
-
-    if 'Hurensohn' in message.content or 'Huso' in message.content or 'hurensohn' in message.content or 'huso' in message.content or 'Wixxer' in message.content or 'wixxer' in message.content or 'Bastard' in message.content or 'bastard' in message.content or 'Du Hund' in message.content or 'du Hund' in message.content or 'du hund' in message.content or 'Du hund' in message.content or 'hundesohn' in message.content or 'nutte' in message.content or 'nuttensohn' in message.content or 'bitch' in message.content or 'moritz meyka' in message.content or 'hentschel' in message.content or 'dummkopf' in message.content or 'schlampe' in message.content or 'Schlampe' in message.content or 'Nutte' in message.content or 'Dummkopf' in message.content or 'Fotze' in message.content or 'Send Nudes' in message.content or 'nudes' in message.content or 'sex' in message.content or 'nigga' in message.content or 'Nigga' in message.content or 'Nibba' in message.content or 'nibba' in message.content or 'Neger' in message.content or 'neger' in message.content or 'Schwuchtel' in message.content or 'schwuchtel' in message.content or 'schwul' in message.content or 'Lesbe' in message.content or 'Kek' in message.content or 'Fettsack' in message.content or 'fettsack' in message.content or 'Mülleimer' in message.content or 'vergewaltige' in message.content or 'rape' in message.content or 'tits' in message.content or 'sex' in message.content:
+    if 'Hurensohn' in message.content or 'nh' in message.content or 'Lmao' in message.content or 'es hora de dormir' in message.content or 'lmao' in message.content or 'ES HORA DE COMER' in message.content or 'es hora de comer' in message.content or 'Es Hora de comer' in message.content or 'Huso' in message.content or 'hurensohn' in message.content or 'huso' in message.content or 'Wixxer' in message.content or 'wixxer' in message.content or 'Bastard' in message.content or 'bastard' in message.content or 'Du Hund' in message.content or 'du Hund' in message.content or 'du hund' in message.content or 'Du hund' in message.content or 'hundesohn' in message.content or 'nutte' in message.content or 'nuttensohn' in message.content or 'bitch' in message.content or 'moritz meyka' in message.content or 'hentschel' in message.content or 'dummkopf' in message.content or 'schlampe' in message.content or 'Schlampe' in message.content or 'Nutte' in message.content or 'Dummkopf' in message.content or 'Fotze' in message.content or 'Send Nudes' in message.content or 'nudes' in message.content or 'sex' in message.content or 'nigga' in message.content or 'Nigga' in message.content or 'Nibba' in message.content or 'nibba' in message.content or 'Neger' in message.content or 'neger' in message.content or 'Schwuchtel' in message.content or 'schwuchtel' in message.content or 'schwul' in message.content or 'Lesbe' in message.content or 'Kek' in message.content or 'Fettsack' in message.content or 'fettsack' in message.content or 'Mülleimer' in message.content or 'vergewaltige' in message.content or 'rape' in message.content or 'tits' in message.content or 'sex' in message.content:
         count3 = int(3)+1
         author = message.author        
         embed = discord.Embed(title=f'@Hw @bjarne \n@{author.name} wird wegen Beleidigungen gebannt',
@@ -446,22 +448,23 @@ async def on_message(message):
         channel = client.get_channel(777277378191425557)
         await channel.send(embed=discord.Embed(title=f'Congratualations @everyone\nich durfte schon insgesamt 100 mal den deutschlandcommand beantworten\n', color=0x22a7f0))
         print('Ich habe bisher insgesamt 100 mal den deutschlandcommand benutzt')
-    while h == True:
-        count7= int(1)
-        channel = client.get_channel(777277378191425557)
-        time.sleep(43200)
-        deleted = await message.channel.purge(limit=count7, check=is_not_pinned)
-        embed=discord.Embed(title=f'Ich wurde insgesammt {counterall} mal benutzt',
-                            description = 'Diese Nachricht wird alle 12 Stunden erscheinen (also habt ihr ein halbtägiges update)',
-                                               color=0x22a7f0)
-        embed.set_thumbnail(url=author.avatar_url)
-        embed.set_footer(text='Macht weiter so!!!')
-        mess=await channel.send(embed=embed)
-        print('insgesammt benutze commands: ', counterall)
 
 
+
+
+
+    if 'Hw' in message.content:
+        embed = discord.Embed(title=f'Hw ist nicht mehr mit uns. R.I.P.',
+                              description=f'(Er war ein guter Mensch mit schlechten Tendenzen) ',
+                              color=0x22a7f0)
+        embed.set_thumbnail(url= 'https://image.cnbcfm.com/api/v1/image/105438875-1536336503523screen-shot-2018-09-07-at-12.07.32-pm.jpg?v=1536336590&w=740&h=416')
+        embed.set_footer(text='Es soll ihm eine Lehre sein')
+        mess = await message.channel.send(embed=embed)
     
     
+
+
+
+
 
 client.run('')
-
